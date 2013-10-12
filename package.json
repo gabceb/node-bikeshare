@@ -1,0 +1,32 @@
+{
+   "name":"node-bikeshare",
+   "description":"Npm package for interacting with the data for the Bay Area Bike Share program",
+   "version":"0.0.1",
+   "homepage":"http://github.com/gabceb/node-bikeshare",
+   "repository":"git://github.com/gabceb/node-bikeshare.git",
+   "author":"Gabriel Cebrian <gabceb@gmail.com> (http://about.me/gabceb)",
+   "main":"./index.js",
+   
+   "dependencies":{
+      "request" : "2.27.0",
+      "underscore" : "1.5.2",
+      "underscore.string" :"2.3.3"
+   },
+   "devDependencies":{
+      "mocha":"*",
+      "should":"*",
+      "node-fakeweb":"0.0.11"
+   },
+   "scripts":{
+      "test":"make test"
+   },
+   "engines":{
+      "node":">= 0.4.0"
+   },
+   "licenses":[
+      {
+         "type":"MIT",
+         "url":"http://github.com/gabceb/node-bikeshare/raw/master/LICENSE"
+      }
+   ]
+}
