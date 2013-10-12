@@ -1,5 +1,3 @@
-![status](https://secure.travis-ci.org/gabceb/node-bikeshare.png?branch=master)
-
 ## Node-Bikeshare
 
 Node-Bikeshare is an npm package used to interact with the data from the Bay Area Bike Share program
