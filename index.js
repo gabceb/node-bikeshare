@@ -47,13 +47,20 @@ BikeShare.prototype.fetch = function(){
 
 function initAllProperties()
 {
-	// title of the page, as string
 	this.lastStation = getLastStation.bind(this);
 
-	// array of strings, with every link found on the page
 	this.station = getStation.bind(this);
 
 	this.stations = getStationsForCity.bind(this);
+
+	this.emptyStations = getEmptyStations.bind(this);
+	this.isEmptyStation = isEmptyStation.bind(this);
+
+	this.fullStations = getFullStations.bind(this);
+	this.isFullStation = isFullStation.bind(this);
+
+	this.percentAvailableBikes = percentAvailableBikes.bind(this);
+
 }
 
 function getLastStation()
@@ -105,4 +112,66 @@ function getStationsForCity(cityName)
 	}
 
 	return stations;
+}
+
+function getEmptyStations()
+{
+	debug("Getting empty stations");
+	
+	if (_my.empty_stations == undefined)
+	{
+		_my.empty_stations = _und.where(this.response, { availableBikes : 0 }) || null;
+	}
+	
+	return _my.empty_stations;
+}
+
+function isEmptyStation(stationId)
+{
+	// If we receive a station object instead of an id we will grab the id from it
+	if(_und.isObject(stationId))
+	{
+		stationId = stationId.id;
+	}
+
+	return ( getStation.apply(this, [stationId]).availableBikes == 0 );
+}
+
+function getFullStations()
+{
+	debug("Getting full stations");
+	
+	if (_my.empty_stations == undefined)
+	{
+		_my.empty_stations = _und.where(this.response, { availableDocks : 0 }) || null;
+	}
+	
+	return _my.empty_stations;
+}
+
+function isFullStation(stationId)
+{
+	// If we receive a station object instead of an id we will grab the id from it
+	if(_und.isObject(stationId))
+	{
+		stationId = stationId.id;
+	}
+
+	return ( getStation.apply(this, [stationId]).availableDocks == 0 );
+}
+
+function percentAvailableBikes(stationId)
+{
+	// If we receive a station object instead of an id we will grab the id from it
+	if(_und.isObject(stationId))
+	{
+		stationId = stationId.id;
+	}
+
+	var station = getStation.apply(this, [stationId]);
+
+	var available = parseFloat(station.availableBikes);
+	var total = parseFloat(station.totalDocks);
+
+	return Number( (available * 100 / total).toFixed(2));
 }
