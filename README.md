@@ -15,7 +15,7 @@ client.on("fetch", function(){
     console.log("San Francisco stations count: " + client.stations("San Francisco").length );
 });
 
-client.on("error", function(err){
+client.on("error", function(err, statusCode){
 	console.log(error);
 });
 
