@@ -40,7 +40,7 @@ BikeShare.prototype.fetch = function(){
 			self.emit("fetch");
 		}
 		else{
-			self.emit("error", error);
+			self.emit("error", error, response.statusCode );
 		}
 	});
 };

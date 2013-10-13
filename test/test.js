@@ -29,6 +29,20 @@ describe('node-bikeshare', function(){
 		});
 	});
 
+	describe('errors', function(){
+		it("should throw errors if something goes wrong when pulling the data", function(done){
+			client_with_errors = new BikeShare("http://bayareabikeshare.com/stations/bad_response");
+
+			client_with_errors.once("error", function(error, statusCode){
+				statusCode.should.equal(500);
+				
+				done();
+			});
+
+			client_with_errors.fetch();
+		});
+	});
+
 	describe("lastStation", function(){
 		it("should return 77 for the last station's id", function(done){
 	    	var last_station_id_on_json = 77;
