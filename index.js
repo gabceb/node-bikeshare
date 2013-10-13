@@ -61,6 +61,8 @@ function initAllProperties()
 
 	this.percentAvailableBikes = percentAvailableBikes.bind(this);
 
+	this.offlineStations = offlineStations.bind(this);
+
 }
 
 function getLastStation()
@@ -174,4 +176,14 @@ function percentAvailableBikes(stationId)
 	var total = parseFloat(station.totalDocks);
 
 	return Number( (available * 100 / total).toFixed(2));
+}
+
+function offlineStations()
+{
+	if (_my.offlineStations == undefined)
+	{
+		_my.offlineStations = _und.where(this.response, { statusKey : 0 }) || null;
+	}
+	
+	return _my.offlineStations;
 }

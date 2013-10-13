@@ -286,6 +286,55 @@ describe('node-bikeshare', function(){
 			client.fetch();
 		});
 
+		it("should return the percent of available bikes for a station if a station object is passed", function(done){
+			client.once("fetch", function(){
+				station = client.station(58);
+
+				percentAvailable = client.percentAvailableBikes(station);
+				
+				percentAvailable.should.be.an.Number;
+      			percentAvailable.should.equal(36.84);
+
+      			done();
+			});
+			
+			client.fetch();
+		});
+	});
+
+	describe("offline stations", function(){
+
+		it("should return an empty array if there are no offline stations", function(done){
+			client.once("fetch", function(){
+
+				offlineStations = client.offlineStations();
+				
+				offlineStations.should.be.an.Array;
+      			offlineStations.should.be.empty;
+
+      			done();
+			});
+			
+			client.fetch();
+		});
+
+		it("should return an array of offline stations", function(done){
+			
+			client_with_offline_stations = new BikeShare("http://bayareabikeshare.com/stations/json_with_offline_stations");
+
+			client_with_offline_stations.once("fetch", function(){
+
+				offlineStations = client_with_offline_stations.offlineStations();
+				
+				offlineStations.should.be.an.Array;
+      			offlineStations.length.should.equal(1);
+
+      			done();
+			});
+			
+			client_with_offline_stations.fetch();
+		});
+
 	});
 
 });
