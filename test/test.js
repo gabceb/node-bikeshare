@@ -56,16 +56,32 @@ describe('node-bikeshare', function(){
 	    });
 	});
 
-	describe("station_info", function(){
+	describe("station", function(){
 		it("should return the information for a single station if valid", function(done){
 			
 			expected_station_id = 3;
 
 			client.once("fetch", function(){
 
-				station_id = client.station(3).id
-				
-				station_id.should.equal(expected_station_id);
+				station = client.station(3);
+
+				station.should.have.property('id', 3);
+				station.should.have.property('stationName', 'San Jose Civic Center');
+				station.should.have.property('availableDocks', 6);
+				station.should.have.property('totalDocks', 15);
+				station.should.have.property('latitude', 37.330698);
+				station.should.have.property('longitude', -121.888979);
+				station.should.have.property('statusKey', 1);
+				station.should.have.property('availableBikes', 9);
+				station.should.have.property('stAddress1', 'San Jose Civic Center');
+				station.should.have.property('stAddress2', '');
+				station.should.have.property('city', "San Jose");
+				station.should.have.property('postalCode', "");
+				station.should.have.property('location', "W San Carlos Street");
+				station.should.have.property('altitude', '');
+				station.should.have.property('testStation', false);
+				station.should.have.property('lastCommunicationTime', null);
+				station.should.have.property('landMark', "San Jose");
 
 				done();
 			});
