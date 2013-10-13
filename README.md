@@ -27,12 +27,12 @@ client.fetch();
 
 - station
 - stations
+- lastStation
 - emptyStations
-- empty
-- full
-- availableBikes
-- totalDocks
-- percentAvailable
+- isEmptyStation
+- fullStations
+- isFullStation
+- percentAvailableBikes
 - offlineStations
 
 ## ZOMG Fork! Thank you!
