@@ -6,6 +6,10 @@ Node-Bikeshare is an npm package used to interact with the data from the Bay Are
 
 Node-Bikeshare is inspired by the Bikeshare gem by [Zack Shapiro](https://github.com/zackshapiro/bikeshare)
 
+## Installation
+
+	$ npm install node-bikeshare
+	
 ## Usage
 
 ```javascript
