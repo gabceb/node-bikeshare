@@ -46,3 +46,7 @@ client.fetch();
 You're welcome to fork this project and send pull requests. Just remember to include tests.
 
 Copyright (c) 2009-2013 Gabriel Cebrian, released under the MIT license
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/gabceb/node-bikeshare/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
